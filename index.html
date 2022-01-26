@@ -4,15 +4,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>mine sweeper</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body onload="init()"  >
+<div class="container">
 
     <h1>mine sweeper</h1>
     <div class="data"> 
         <div class="stopwatch" id="display">000</div>
         <div class="lives"> 💗💗💗</div>
-        <button onclick="init()">Beginner 4X4</button>
+        <button onclick="init(4,2)">Beginner 4X4</button>
         <button onclick="init(8,12)">Medium 8X8</button>
         <button onclick="init(12,30)">Expert 12X12</button>
     </div>
@@ -22,9 +23,11 @@
         </tbody>
       </table>
 
+</div>
 
-    <script src="js/utils.js"></script>
-    <script src="js/game.js"></script>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/game.js"></script>
 
 </body>
 </html>

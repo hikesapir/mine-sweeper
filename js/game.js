@@ -28,8 +28,8 @@ function init(size = 4, mines = 2) {
     firstClick = true
 
     gBoard = buildBoard(gLevel.size)
+    console.log(gLevel.mines);
     console.log(gBoard);
-
     renderBoard()
 }
 
@@ -54,7 +54,6 @@ function buildBoard(size) {
     return board;
 }
 
-
 function renderBoard() {
     // setRandomMines(gBoard, 2);
     // setMineNegsCount()
@@ -68,7 +67,7 @@ function renderBoard() {
 
             strHTML += `\t<td onmousedown="cellClicked(this, event, ${i}, ${j})"
                            id="'${tdId}'" >
-                            sapir
+                            
                          </td>\n`
         }
         strHTML += `</tr>\n`
@@ -86,7 +85,6 @@ function setMineNegsCount() {
     }
 }
 
-
 function countNegs(cellI, cellJ, mat) {
     var mineCount = 0;
     for (var i = cellI - 1; i <= cellI + 1; i++) {
@@ -102,19 +100,19 @@ function countNegs(cellI, cellJ, mat) {
 
 function cellClicked(cell, ev, i, j) {
 
-if (firstClick) {
-    if (!ev.button) {
-        firstClick = false;
-        gBoard[i][j].isShown;
-        setRandomMines(gBoard, 2);
-        setMineNegsCount()
-        renderBoard();
-        startTimer();
-        var cell = document.getElementById(cell.id)
-    } else return
-}
+    if (firstClick) {
+        if (!ev.button) {
+            firstClick = false;
+            gBoard[i][j].isShown;
+            setRandomMines(gBoard, gLevel.mines);
+            setMineNegsCount();
+            renderBoard();
+            startTimer();
+            var cell = document.getElementById(cell.id)
+        } else return
+    }
 
-    
+
     var currCell = gBoard[i][j]
     if (currCell.isShown) return
 
@@ -135,7 +133,8 @@ if (firstClick) {
         stopTimer();
         if (currCell.isMine) {
             revealMines()
-            removeLife()
+            // removeLife()
+            gMinesLocation=[];
         }
         setTimeout(() => {
             alert('game over')
@@ -147,7 +146,7 @@ function setRandomMines(board, amount) {
     var emptyCells = getEmptyCellsLocation(board);
 
     for (var i = 0; i < amount; i++) {
-        var idx = getRandomInt(0, emptyCells.length);
+        var idx = getRandomInt(0, emptyCells.length - 1);
         var currLoction = emptyCells[idx];
         gMinesLocation.push(currLoction);
         var currCell = board[currLoction.i][currLoction.j]
@@ -194,8 +193,8 @@ function revealMines() {
 
 }
 
-function removeLife(){
-    var elHart = document.querySelector(`.lives 1`);
-    console.log(elHart);
+// function removeLife() {
+//     var elHart = document.querySelector(`.lives 1`);
+//     console.log(elHart);
 
-}
+// }
