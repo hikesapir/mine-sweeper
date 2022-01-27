@@ -72,7 +72,7 @@ function showCells(cellI, cellJ) {
             var currCell = gBoard[i][j]
             if (gGame.ishelp) {
                 elCell.innerHTML = (currCell.isMine) ? MINE : currCell.minesAroundCount
-            } else {
+            } else if(!currCell.isShown) {
                 elCell.innerHTML = '';
             }
         }
