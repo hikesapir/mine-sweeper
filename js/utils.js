@@ -35,7 +35,6 @@ function printMat(mat, selector) {
 //Define var to hold setInterval() function
 var interval = null;
 //Define vars to hold time values
-var seconds = 0;
 var displaySeconds = 0;
 
 //Define var to hold stopwatch status
@@ -44,15 +43,15 @@ var status = "stopped";
 //Stopwatch function (logic to determine when to increment next value, etc.)
 function stopWatch() {
 
-  seconds++;
+  gGame.secPassed++;
 
   //If millisec/seconds/minutes are only one digit, add a leading 0 to the value
-  if (seconds < 10) {
-    displaySeconds = "00" + seconds.toString();
-  } else if (seconds < 100) {
-    displaySeconds = "0" + seconds.toString();
+  if (gGame.secPassed < 10) {
+    displaySeconds = "00" + gGame.secPassed.toString();
+  } else if (gGame.secPassed < 100) {
+    displaySeconds = "0" + gGame.secPassed.toString();
   } else {
-    displaySeconds = seconds;
+    displaySeconds = gGame.secPassed;
   }
 
   //Display updated time values to user
@@ -75,6 +74,12 @@ function stopTimer() {
 //Function to reset the stopwatch
 function resetTimer() {
   window.clearInterval(interval);
-  seconds = 0;
+  gGame.secPassed = 0;
   document.getElementById("display").innerHTML = "000";
 }
+
+
+
+
+
+
