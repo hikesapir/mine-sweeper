@@ -4,7 +4,7 @@
 }
 
 body{
-	background-image: url("../img/background2.png");
+	background-image: url("/img/background2.png");
 	/* Full height */
 	height: 100%;
 
@@ -43,8 +43,7 @@ table{
 }
 
 .shown{
-	background-color: rgb(28, 75, 68);
-	opacity: 0.6;
+	background-color: rgb(28, 75, 68, 0.6);
 }
 
 
@@ -88,7 +87,8 @@ button:hover{
 }
 
 .manually-create{
-	left: 10px;
+
+	left: 13%;
 	top: 5px;
 	position:fixed;
 }
