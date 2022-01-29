@@ -1,6 +1,7 @@
 'use strict';
 
 
+
 function setRandomMines(board, amount) {
     var emptyCells = getEmptyCellsLocation(board);
 
@@ -21,7 +22,7 @@ function getEmptyCellsLocation(board) {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
             var currCell = board[i][j];
-            if (!currCell.isMine && !currCell.isShown) {
+            if (!currCell.isMine && !currCell.isShown && !currCell.isMarked) {
                 res.push({ i, j });
             }
         }

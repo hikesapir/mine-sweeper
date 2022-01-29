@@ -1,47 +1,60 @@
 <html>
+
 <head>
-    <!-- <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+ 
     <title>mine sweeper</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body onload="init()"  >
-<button class="manually-create"> make your own board</button>
-    <div class="container">
-        
-        <h1>mine sweeper</h1>
-        <div class="data"> 
-            <div class="stopwatch" id="display">000</div>
-            <div class="best-time"></div>
-        <span onclick="resetData(4,2)">🙂</span>
-        <div class="lives"> 💗💗💗</div>
-        <div class="btns">
-            <button onclick="resetData(4,2,1)">Beginner 4X4</button>
-            <button onclick="resetData(8,12,2)">Medium 8X8</button>
-            <button onclick="resetData(12,30,3)">Expert 12X12</button>
-        </div>
+
+<body onload="init()">
+
+    <div class="manually-create">
+        <button onclick="makeBoard()"> make your own board</button>
+        <button onclick="locateInstructions()" class="next">next</button>
+
     </div>
     
-    
-    <table border="1" cellpadding="20" class="board"  oncontextmenu="return false;" >
-        <tbody class="cells">
-        </tbody>
-    </table>
-    
-    <button class="reval-area" onclick="showCellsOמ()">help (reveal area)</button>
-    <button class="hint-btn" onclick="getHint(this)">💡3</button>
-      
+    <div class="container">
+        
+        <h1>Mine Sweeper</h1>
+        <div class="best-time"> </div>
 
-</div>
+        <div class="data">
+            <div class="stopwatch" id="display">000</div>
+            <span onclick="resetData()">🙂</span>
+            <div class="lives"> 💗💗💗</div>
+            <div class="btns">
+                <button onclick="resetData(4,2,1)">Beginner 4X4</button>
+                <button onclick="resetData(8,12,2)">Medium 8X8</button>
+                <button onclick="resetData(12,30,3)">Expert 12X12</button>
+            </div>
+        </div>
 
-<div class="footer">
-    <p>©coffeeRight sapir hiki</p>
-  </div>
-    <script src="js/utils.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/mines.js"></script>
-    <script src="js/cells.js"></script>
+
+        <table border="1" cellpadding="20" class="board" oncontextmenu="return false;">
+            <tbody class="cells">
+            </tbody>
+        </table>
+        <div class="additional-btn">
+            <button class="normal" onclick="setNormalMode()" >normal mode</button>
+            <button class="undo" onclick="undo()">undo</button>
+            <button class="reval-area" onclick="showCellsOמ()">help (reveal area)</button>
+            <button class="hint-btn" onclick="getHint(this)" title="will show you a safe click">💡3</button>
+            <button class="boom" onclick="boomMode()" title="first chose board size then click here" >mode 7-boom</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>©coffeeRight sapir hiki</p>
+    </div>
+    <script src="/js/utils.js"></script>
+    <script src="/js/game.js"></script>
+    <script src="/js/boomMode.js"></script>
+    <script src="/js/mines.js"></script>
+    <script src="/js/cells.js"></script>
+    <script src="/js/userBoard.js"></script>
 
 </body>
+
 </html>

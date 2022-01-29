@@ -3,8 +3,10 @@
 
 function setMineNegsCount() {
     for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[i].length; j++)
-            gBoard[i][j].minesAroundCount = countNegs(i, j, gBoard)
+        for (var j = 0; j < gBoard[i].length; j++) {
+
+            gBoard[i][j].minesAroundCount = (countNegs(i, j, gBoard) > 0) ? countNegs(i, j, gBoard) : '';
+        }
     }
 }
 
@@ -22,7 +24,7 @@ function countNegs(cellI, cellJ, mat) {
 }
 
 function cellMarked(elCell, i, j) {
-    if (gBoard[i][j].isMarked){
+    if (gBoard[i][j].isMarked) {
         gGame.markedCount--;
 
         if (gBoard[i][j].isMine) {
@@ -30,11 +32,10 @@ function cellMarked(elCell, i, j) {
         }
         // update the MODEL
         gBoard[i][j].isMarked = false;
-        console.log(gBoard);
         // update the DOM
         elCell.innerHTML = '';
 
-    }else{
+    } else {
         gGame.markedCount++;
 
         if (gBoard[i][j].isMine) {
@@ -42,13 +43,13 @@ function cellMarked(elCell, i, j) {
         }
         // update the MODEL
         gBoard[i][j].isMarked = true;
-        console.log(gBoard);
         // update the DOM
         elCell.innerHTML = MARK;
     }
 }
 
 function getHint(elBtn) {
+    if(!gGame.isOn)return
     if (gGame.hints) {
         gGame.hints--
         elBtn.innerText = '💡' + gGame.hints;
@@ -64,6 +65,8 @@ function getHint(elBtn) {
 }
 
 function showCells(cellI, cellJ) {
+    if(!gGame.isOn)return
+
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
@@ -72,7 +75,7 @@ function showCells(cellI, cellJ) {
             var currCell = gBoard[i][j]
             if (gGame.ishelp) {
                 elCell.innerHTML = (currCell.isMine) ? MINE : currCell.minesAroundCount
-            } else if(!currCell.isShown) {
+            } else if (!currCell.isShown) {
                 elCell.innerHTML = '';
             }
         }
@@ -95,14 +98,17 @@ function expandShown(board, idxi, idxj) {
         for (var j = idxj - 1; j <= idxj + 1; j++) {
             if (j < 0 || j >= board[i].length) continue;
             if (i === idxi && j === idxj) continue;
-            if (board[i][j].isShown) continue;
+            if (board[i][j].isShown || board[i][j].isMarked || board[i][j].isMine) continue;
             document.getElementById(`cell-${i}-${j}`).innerHTML = board[i][j].minesAroundCount
             board[i][j].isShown = true;
             gGame.unShownCount--
-            document.getElementById(`cell-${i}-${j}`).classList.add('.shown')
+            document.getElementById(`cell-${i}-${j}`).classList.add('shown')
+            document.getElementById(`cell-${i}-${j}`).classList.remove('unshown')
 
-            if (!board[i][j].minesAroundCount) return expandShown(gBoard, i, j)
+            if (!board[i][j].minesAroundCount) expandShown(gBoard, i, j)
+
 
         }
     }
+
 }

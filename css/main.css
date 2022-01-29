@@ -1,73 +1,140 @@
 * {
 	box-sizing: border-box;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 body{
-	background-color: rgb(28, 43, 128);
-	/* display: flex; */
-	justify-content: center;
-	align-items: center;
+	background-image: url("/img/background2.png");
+	/* Full height */
+	height: 100%;
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.container{
-	text-align: center;
-	margin: auto;
-	width: 500px;
-	height: 550px;
-	min-width: 60%;
-	background-color: wheat;
-	border-radius: 5px;
-	box-shadow: 0 0 20px 2px ;
-}
 table{
 	width: 400px;
-    height: 400px;
+	height: 400px;
 	max-width: 500px;
 	max-height: 500px;
 	margin: auto;
 }
 
+
 .board td {
 	height: 30px;
-    width: 30px;
-    background-color: rgb(63, 74, 139);
+	width: 30px;
 	color: ivory;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 5px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 5px;
 	padding: 1px;
-	opacity: 0.9;
+}
+
+.unshown{
+	cursor: pointer;
+	background-color: rgb(156, 218, 209);
+	-webkit-box-shadow:0px 1px 1px rgba(255,255,255,0.8) inset, 1px 1px 3px rgba(0,0,0,0.2);
+    -moz-box-shadow:0px 1px 1px rgba(255,255,255,0.8) inset, 1px 1px 3px rgba(0,0,0,0.2);
+    box-shadow:0px 1px 1px rgba(255,255,255,0.8) inset, 1px 1px 3px rgba(0,0,0,0.2);
+
+}
+
+.shown{
+	background-color: rgb(28, 75, 68);
+	opacity: 0.6;
+}
+
+
+.hint{
+	border: 5px green solid;
+}
+
+.footer{
+	left: 10px;
+	bottom: 5px;
+	position:fixed;
+	color: lavender;
+}
+
+
+button{
+	cursor: pointer;
+	width: 70px;
+	border-radius: 10px;
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+    width: 70px;
+}
+
+button:hover{
+	background-color: rgb(211, 211, 211);
+}
+
+.button:active{
+	box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+}
+
+.data button{
+	width: 100px;
+}
+
+
+.next{
+	display: none;
+	position:fixed;
+
+}
+
+.manually-create{
+	left: 10px;
+	top: 5px;
+	position:fixed;
+}
+
+.container{
+	text-align: center;
+	margin: auto;
+	width: 576px;
+	height: 600px;
+	min-width: 60%;
+	background-color: rgba(148, 147, 144, 0.7) ;
+	border-radius: 5px;
+	box-shadow: 0 0 20px 2px ;
+}
+
+h1{
+	font-style: oblique;
+	 font-style: italic; 
+	font-weight: 1000px;
+	font-size: 50px;
+	margin: 1px;
+	text-decoration: underline solid rgb(68, 68, 68);
+
 	
 }
 
 .data{
 	text-align: center;
 	width: 500px;
-	background-color:rgb(211, 202, 186);
+	background-color:rgba(58, 96, 146, 0.7);
 	border-radius: 5px;
 	position: relative;
 	margin: auto;
 }
 
-button{
-	cursor: pointer;
-	width: 70px;
-	margin-top: 5px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-		 appearance: none;
- border: 0;
- border-radius: 0;
- background: #ccc;
+.data span{
+font-size: 25px;
 }
 
 .stopwatch {
 	position: absolute;
 	left: 10px;
 	top: 5px;
-	width: 30px;
-	background-color: grey;
+	width: 40px;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
 }
 
 .lives{
@@ -75,35 +142,41 @@ button{
 	right: 10px;
 	top: 5px;
 	width: 90px;
-	background-color: grey;
-}
-
-.hint-btn {
-	position: absolute;
-	/* right: 100px; */
-}
-.reval-area{
-	width: 120px;
-	height: 20.4;
-	margin: 5px;
 }
 
 .data span{
 	cursor: pointer;
 }
-.hint{
-	border: 5px green solid;
-}
 
 .best-time{
-	color: white;
+	color: rgb(255, 255, 255);
 	font-size: 20px;
 }
-.footer{
-	color: lavender;
+
+.additional-btn{
+	margin: auto;
+	align-items: center;
+
 }
-.manually-create{
-	position: absolute;
-	left: 10px;
-	top: 5px;
+
+.reval-area{
+	width: 150px;
+	height: 20.4px;
 }
+
+.undo{
+	height: 20.4px;
+}
+
+
+.boom{
+	width: 100px;
+	height: 20.4px;
+}
+
+
+.normal{
+	width: 120px;
+	height: 20.4px;
+}
+

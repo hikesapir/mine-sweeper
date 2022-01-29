@@ -4,14 +4,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// function renderCell(selector, value) {
-//   // Select the elCell and set the value
-//   // console.log(selector);
-//   // var elCell = document.querySelector(selector);
-//   // console.log(elCell);
-//   cell.innerHTML = value;
-// }
-
 function printMat(mat, selector) {
   var strHTML = '';
   for (var i = 0; i < mat.length; i++) {
@@ -33,7 +25,7 @@ function printMat(mat, selector) {
 
 
 //Define var to hold setInterval() function
-var interval = null;
+var interval;
 //Define vars to hold time values
 var displaySeconds = 0;
 
@@ -50,9 +42,9 @@ function stopWatch() {
     displaySeconds = "00" + gGame.secPassed.toString();
   } else if (gGame.secPassed < 100) {
     displaySeconds = "0" + gGame.secPassed.toString();
-  } else {
+  } else if(gGame.secPassed<1000) {
     displaySeconds = gGame.secPassed;
-  }
+  }else stopTimer()
 
   //Display updated time values to user
   document.getElementById("display").innerHTML = displaySeconds;
@@ -62,8 +54,8 @@ function stopWatch() {
 // start and stop the timer
 function startTimer() {
   //Start the stopwatch (by calling the setInterval() function)
-  interval = window.setInterval(stopWatch, 1000);
   status = "started";
+  interval = window.setInterval(stopWatch, 1000);
 }
 
 function stopTimer() {
@@ -78,6 +70,29 @@ function resetTimer() {
   document.getElementById("display").innerHTML = "000";
 }
 
+
+function contains(number, digit) {
+  if (number < 0) { // make sure negatives are dealt with properly, alternatively replace this if statement with number = Math.abs(number)
+      number *= -1;
+  }
+  if (number == digit) { // this is to deal with the number=0, digit=0 edge case
+      return true;
+  }
+  while (number != 0) { // stop once all digits are cut off
+      if (number % 10 === digit) { // check if the last digit matches
+          return true;
+      }
+      number = Math.floor(number / 10); // cut off the last digit
+  }
+  return false;
+}
+
+function indexOfObject(array, value) {
+  for (var i = 0; i < array.length; i++) {
+      if (array[i].i === value.i && array[i].j === value.j) return i;
+  }
+  return -1;
+}
 
 
 
