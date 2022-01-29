@@ -7,14 +7,13 @@ function boomMode() {
     console.log('gGame.isUserMode', gGame.isUserMode);
     gGame.is7BoomMode = true;
     console.log('gGame.is7BoomMode', gGame.is7BoomMode);
-    gGame.isOn=false;
+    gGame.isOn = false;
     resetData();
     gBoard = buildBoard(gLevel.size);
     setBoomMines();
     setMineNegsCount();
-    resetTimer();
-    renderBoard();
-    gGame.isOn=true
+    init();
+
 
 
 }
@@ -42,8 +41,8 @@ function setBoomMines() {
             var currcell = cells[i - 1].board;
             currcell.isMine = true;
             var location = {
-                i: cells[i-1].i,
-                j: cells[i-1].j
+                i: cells[i - 1].i,
+                j: cells[i - 1].j
             }
             console.log(i);
             gMinesLocation.push(location);

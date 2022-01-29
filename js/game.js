@@ -40,7 +40,7 @@ var bestTimeLevel3 = Infinity
 
 function init() {
 
-    if (!gGame.isUserMode) {
+    if (gGame.isNormalMode) {
         gBoard = buildBoard(gLevel.size)
     } else if (gGame.isUserMode) {
         if (gMinesLocation.length < gLevel.mines) {
