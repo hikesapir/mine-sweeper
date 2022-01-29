@@ -53,7 +53,7 @@ function init() {
         console.log(gBoard);
         gGame.is7BoomMode = false;
     }
-    
+
     document.querySelector('.next').style.display = 'none'
     renderBoard();
     resetTimer();
@@ -119,7 +119,6 @@ function cellClicked(elCell, ev, i, j) {
         return
     }
 
-    addToHistory();
 
     if (firstClick && !ev.button) {
         firstClick = false;
@@ -134,6 +133,8 @@ function cellClicked(elCell, ev, i, j) {
         }
 
     }
+
+    addToHistory();
 
     var elCell = document.getElementById(elCell.id);
     currCell = gBoard[i][j];
@@ -190,10 +191,10 @@ function removeLife() {
 }
 
 function resetData(size = gLevel.size, mines = gLevel.mines, lives = gLevel.lives) {
-if (gGame.isOn&&gGame.isUserMode){
-    alert ('to start new game press normal mode button');
-    return;
-}
+    if ((gGame.isOn && !gGame.isNormalMode)) {
+        alert('to start new game press normal mode button');
+        return;
+    }
     gGame = {
         isOn: false,
         isNormalMode: gGame.isNormalMode,
@@ -221,14 +222,14 @@ if (gGame.isOn&&gGame.isUserMode){
 
     removeLife()
 
-    
-    
+
+
     var changeRecord = document.querySelector('.best-time');
     if (gGame.isNormalMode) {
         changeRecord.style.display = 'block'
         if (localStorage.getItem('bestTimelevel' + gLevel.lives) > 0) {
             changeRecord.innerText = `your best time for this level is: ${localStorage.getItem('bestTimelevel' + gLevel.lives)} sec`;
-        }else{
+        } else {
             changeRecord.style.display = 'none'
         }
     }

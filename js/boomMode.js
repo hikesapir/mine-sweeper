@@ -7,10 +7,14 @@ function boomMode() {
     console.log('gGame.isUserMode', gGame.isUserMode);
     gGame.is7BoomMode = true;
     console.log('gGame.is7BoomMode', gGame.is7BoomMode);
+    gGame.isOn=false;
     resetData();
     gBoard = buildBoard(gLevel.size);
     setBoomMines();
     setMineNegsCount();
+    resetTimer();
+    renderBoard();
+    gGame.isOn=true
 
 
 }
