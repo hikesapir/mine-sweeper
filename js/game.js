@@ -175,7 +175,7 @@ function cellClicked(elCell, ev, i, j) {
 }
 
 function checkGameOver() {
-    if ((gGame.unShownCount === gLevel.mines) || gGame.livesCount < 0) {
+    if ((gGame.unShownCount === gLevel.mines) || gGame.livesCount <= 0) {
         return true
     }
     return false
