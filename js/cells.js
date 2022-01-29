@@ -32,6 +32,7 @@ function cellMarked(elCell, i, j) {
         }
         // update the MODEL
         gBoard[i][j].isMarked = false;
+
         // update the DOM
         elCell.innerHTML = '';
 
@@ -43,13 +44,18 @@ function cellMarked(elCell, i, j) {
         }
         // update the MODEL
         gBoard[i][j].isMarked = true;
+
         // update the DOM
         elCell.innerHTML = MARK;
+        console.log(document.querySelector('.flags'));
+
+
+
     }
 }
 
 function getHint(elBtn) {
-    if(!gGame.isOn)return
+    if (!gGame.isOn) return
     if (gGame.hints) {
         gGame.hints--
         elBtn.innerText = '💡' + gGame.hints;
@@ -65,7 +71,7 @@ function getHint(elBtn) {
 }
 
 function showCells(cellI, cellJ) {
-    if(!gGame.isOn)return
+    if (!gGame.isOn) return
 
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;

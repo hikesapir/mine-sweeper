@@ -4,7 +4,7 @@
 }
 
 body{
-	background-image: url("../img/background2.png");
+	background-image: url("/img/background2.png");
 	/* Full height */
 	height: 100%;
 
@@ -180,3 +180,13 @@ font-size: 25px;
 	height: 20.4px;
 }
 
+.lost{
+	background-color: rgba(255, 0, 0);
+}
+
+.flags{
+	position: absolute;
+	color: rgb(255, 255, 255);
+	width: 50px;
+	left: 60px;
+}

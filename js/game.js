@@ -27,7 +27,7 @@ var gGame = {
     livesCount: 1,
     hints: 3,
     ishelp: false,
-    helpCount: 3
+    helpCount: 3,
 }
 var firstClick = true;
 var gCorrect = 0;
@@ -168,7 +168,7 @@ function cellClicked(elCell, ev, i, j) {
             gGame.is7BoomMode = false;
         }
         gGame.isOn = false
-        gameOver(currCell, ev);
+        gameOver(currCell, ev,elCell);
     }
 
 
@@ -192,7 +192,7 @@ function removeLife() {
 
 function resetData(size = gLevel.size, mines = gLevel.mines, lives = gLevel.lives) {
     if ((gGame.isOn && !gGame.isNormalMode)) {
-        alert('to start new game press normal mode button');
+        alert('to start a new game, press normal mode button');
         return;
     }
     gGame = {
@@ -206,7 +206,8 @@ function resetData(size = gLevel.size, mines = gLevel.mines, lives = gLevel.live
         livesCount: lives,
         hints: 3,
         ishelp: false,
-        helpCount: 3
+        helpCount: 3,
+
     }
 
     gLevel.size = size;
@@ -241,7 +242,7 @@ function resetData(size = gLevel.size, mines = gLevel.mines, lives = gLevel.live
     init();
 }
 
-function gameOver(currCell, ev) {
+function gameOver(currCell, ev,elCell) {
 
     stopTimer();
     revealMines();
@@ -250,7 +251,7 @@ function gameOver(currCell, ev) {
         gMinesLocation = [];
         document.querySelector('.data span').innerHTML = LOSE
         alert('game over')
-
+        elCell.classList.add('lost')
     } else {
         document.querySelector('.data span').innerHTML = WIN
         alert('victorios')
