@@ -219,7 +219,7 @@ function resetData(size = gLevel.size, mines = gLevel.mines, lives = gLevel.live
     gUndoMemory = [];
 
     firstClick = true
-    document.querySelector('.data span').innerHTML = GAMEON
+    document.querySelector('.dashboard span').innerHTML = GAMEON
 
     removeLife()
 
@@ -249,11 +249,11 @@ function gameOver(currCell, ev,elCell) {
 
     if (currCell.isMine && !ev.button) {
         gMinesLocation = [];
-        document.querySelector('.data span').innerHTML = LOSE
+        document.querySelector('.dashboard span').innerHTML = LOSE
         alert('game over')
         elCell.classList.add('lost')
     } else {
-        document.querySelector('.data span').innerHTML = WIN
+        document.querySelector('.dashboard span').innerHTML = WIN
         alert('victorios')
 
 

@@ -113,8 +113,6 @@ function expandShown(board, idxi, idxj) {
 
             if (!board[i][j].minesAroundCount) expandShown(gBoard, i, j)
 
-
         }
     }
-
 }

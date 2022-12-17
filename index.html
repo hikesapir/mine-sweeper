@@ -1,60 +1,41 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
- 
-    <title>mine sweeper</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body onload="init()">
+    <h1 class="logo">Mine Sweeper</h1>
 
-    <div class="manually-create">
-        <button onclick="makeBoard()"> make your own board</button>
-        <button onclick="locateInstructions()" class="next">next</button>
-
-    </div>
-    
-    <div class="container">
-        
-        <h1>Mine Sweeper</h1>
-        <div class="best-time"> </div>
-
-        <div class="data">
-            <div class="stopwatch" id="display">000 </div>
-            <span onclick="resetData()">🙂</span>
-            <div class="lives"> 💗💗💗</div>
-            <div class="btns">
-                <button onclick="resetData(4,2,1)">Beginner 4X4</button>
-                <button onclick="resetData(8,12,2)">Medium 8X8</button>
-                <button onclick="resetData(12,30,3)">Expert 12X12</button>
-            </div>
+    <section class="game-container" oncontextmenu="return false">
+        <div class="dashboard">
+            <span class="game-info flag-counter">🚩 000</span>
+            <span class="game-info live-counter">💗💗💗</span>
+            <button class="reset-btn" onclick="resetGame()">🙂</button>
+            <span class="game-info timer">00:00</span>
+            <select class="game-info level" onchange="setLevel(value)">
+                <option value="4-2-1">Easy</option>
+                <option value="8-12-2">Advanced</option>
+                <option value="12-30-3">Expet</option>
+            </select>
         </div>
-
-
-        <table border="1" cellpadding="20" class="board" oncontextmenu="return false;">
+        <table class="board">
             <tbody class="cells">
             </tbody>
         </table>
-        <div class="additional-btn">
-            <button class="normal" onclick="setNormalMode()" >normal mode</button>
-            <button class="undo" onclick="undo()">undo</button>
-            <button class="reval-area" onclick="showCellsOמ()">help (reveal area)</button>
-            <button class="hint-btn" onclick="getHint(this)" title="will show you a safe click">💡3</button>
-            <button class="boom" onclick="boomMode()" title="first chose board size then click here" >mode 7-boom</button>
-        </div>
+    </section>
 
-    </div>
+    <footer>
+        <p>©coffeeRight Sapir Hiki</p>
+    </footer>
 
-    <div class="footer">
-        <p>©coffeeRight sapir hiki</p>
-    </div>
     <script src="js/utils.js"></script>
     <script src="js/game.js"></script>
-    <script src="js/boomMode.js"></script>
-    <script src="js/mines.js"></script>
-    <script src="js/cells.js"></script>
-    <script src="js/userBoard.js"></script>
-
 </body>
 
 </html>
